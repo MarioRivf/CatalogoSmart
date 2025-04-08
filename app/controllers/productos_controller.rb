@@ -1,5 +1,12 @@
 class ProductosController < ApplicationController
   before_action :set_producto, only: %i[ show edit update destroy ]
+  before_action :require_login
+
+  def require_login
+    unless logged_in?
+      redirect_to login_path, alert: "¡Debes iniciar sesión primero!"
+    end
+  end
 
   # GET /productos or /productos.json
   def index

@@ -1,5 +1,13 @@
 <% content_for :title, "Productos" %>
 
+<% if logged_in? %>
+  <%= link_to 'Cerrar sesión', logout_path, method: :delete %>
+
+<% else %>
+  <%= link_to "Iniciar sesión", login_path, class: "text-blue-600" %>
+<% end %>
+
+
 <div class="w-full max-w-5xl mx-auto px-4 py-8">
   <% if notice.present? %>
     <div class="mb-6">
